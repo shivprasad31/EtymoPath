@@ -1,0 +1,53 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn vocabulary through word roots, origins, and relationships with EtymoPath.">
+  <title>{% block title %}EtymoPath — Learn how words connect{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'core/css/app.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg site-nav" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand brand" href="{% url 'core:home' %}" aria-label="EtymoPath home"><span class="brand-mark">e</span>etymopath<span class="brand-period">.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto align-items-lg-center gap-lg-4">
+          <li class="nav-item"><a class="nav-link" href="{% url 'core:home' %}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'core:explore' %}">Explore Words</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'core:journey' %}">Learning Journey</a></li>
+          {% if user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'core:dashboard' %}">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'core:revision' %}">Revision</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'core:progress' %}">Progress</a></li>
+          {% endif %}
+        </ul>
+        <div class="nav-actions d-flex align-items-center gap-3">
+          {% if user.is_authenticated %}
+            <a class="login-link" href="{% url 'core:profile' %}">{{ user.username }}</a>
+            <form method="post" action="{% url 'logout' %}" class="m-0">{% csrf_token %}<button class="btn btn-forest btn-sm-rounded" type="submit">Log out</button></form>
+          {% else %}
+            <a class="login-link" href="{% url 'login' %}">Log in</a>
+            <a class="btn btn-forest btn-sm-rounded" href="{% url 'core:register' %}">Sign up <span aria-hidden="true">↗</span></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  {% if messages %}<div class="container message-stack" aria-live="polite">{% for message in messages %}<div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="status">{{ message }}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Dismiss"></button></div>{% endfor %}</div>{% endif %}
+  {% block content %}{% endblock %}
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="{% url 'core:home' %}"><span class="brand-mark">e</span>etymopath<span class="brand-period">.</span></a><p>Follow the roots. Find your words.</p><span class="footer-copy">© 2026 EtymoPath</span></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

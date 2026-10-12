@@ -1,0 +1,46 @@
+{
+  "levels": [
+    {
+      "slug": "beginner",
+      "name": "Beginner",
+      "description": "Start with one Latin root and notice how prefixes shape meaning.",
+      "order": 1,
+      "module": {"slug": "writing-roots", "title": "Writing roots", "summary": "Meet scribere and words formed from the Latin ‘to write’ root.", "order": 1,
+        "lesson": {"slug": "scrib-script-foundations", "title": "Scribere: the writing family", "introduction": "Explore describe, inscription, manuscript, and transcript. Each connects to Latin scribere through a different word form or prefix.", "order": 1, "words": ["describe", "inscription", "manuscript", "transcript"],
+          "questions": [
+            {"word": "describe", "prompt": "Which Latin verb is at the heart of describe?", "explanation": "Describe comes from Latin describere, from de- + scribere.", "choices": [["scribere, ‘to write’", true], ["portare, ‘to carry’", false], ["manus, ‘hand’", false]]},
+            {"word": "inscription", "prompt": "In inscription, what does the Latin prefix in- contribute?", "explanation": "Here in- means ‘in’ or ‘on’, as in writing on a surface.", "choices": [["in or on", true], ["across", false], ["by hand", false]]},
+            {"word": "manuscript", "prompt": "What does manu mean in the Latin expression behind manuscript?", "explanation": "Manu is the ablative form of manus, ‘hand’; scriptus means ‘written’.", "choices": [["by hand", true], ["again", false], ["outward", false]]}
+          ]}
+      }
+    },
+    {
+      "slug": "intermediate",
+      "name": "Intermediate",
+      "description": "Compare prefixes and related forms in a second Latin word family.",
+      "order": 2,
+      "module": {"slug": "carrying-roots", "title": "Movement and direction", "summary": "Follow portare through words about carrying in, out, across, and from place to place.", "order": 1,
+        "lesson": {"slug": "port-family", "title": "Portare: carrying across", "introduction": "The Latin verb portare means ‘to carry’. Prefixes and later Latin forms shape the English words in this family.", "order": 1, "words": ["transport", "import", "export", "portable"],
+          "questions": [
+            {"word": "transport", "prompt": "What does the prefix trans- mean in transport?", "explanation": "Latin trans- means ‘across’ or ‘beyond’; transportare meant to carry across.", "choices": [["across", true], ["in or into", false], ["by hand", false]]},
+            {"word": "import", "prompt": "Which Latin verb contributes the ‘carry’ element in import?", "explanation": "Import comes from Latin importare, formed with in- and portare.", "choices": [["portare", true], ["scribere", false], ["manus", false]]},
+            {"word": "portable", "prompt": "Portable reached English through later forms of which Latin verb?", "explanation": "Portable comes through French portable and Late Latin portabilis, from Latin portare.", "choices": [["portare, ‘to carry’", true], ["transcribere, ‘to copy’", false], ["inscribere, ‘to write on’", false]]}
+          ]}
+      }
+    },
+    {
+      "slug": "advanced",
+      "name": "Advanced",
+      "description": "Read more closely: distinguish shared roots, prefixes, and historical word forms.",
+      "order": 3,
+      "module": {"slug": "morphology-in-context", "title": "Morphology in context", "summary": "Compare the formation paths of familiar words without relying on spelling alone.", "order": 1,
+        "lesson": {"slug": "forms-and-pathways", "title": "Forms and pathways", "introduction": "The same historical root can reach English through different Latin forms. Identify the specific route and avoid treating every similar spelling as the same morpheme.", "order": 1, "words": ["manuscript", "transcript", "inscription", "portable"],
+          "questions": [
+            {"word": "manuscript", "prompt": "Which part of manuscript contributes the meaning ‘by hand’?", "explanation": "Manu comes from manus, ‘hand’; scriptus is a form of scribere, ‘to write’.", "choices": [["manu", true], ["scriptus", false], ["-able", false]]},
+            {"word": "transcript", "prompt": "Transcript is based on a Latin form of which verb?", "explanation": "Transcript comes from Latin transcriptum, the neuter past participle of transcribere.", "choices": [["transcribere", true], ["portare", false], ["inscribere", false]]},
+            {"word": "portable", "prompt": "Which statement best describes portable’s connection to portare?", "explanation": "Portable came through French and Late Latin portabilis, which is from portare.", "choices": [["It is root-related through later forms, not a direct English prefix + root construction.", true], ["It is a direct English compound of port + able.", false], ["It shares only a similar spelling, with no historical link.", false]]}
+          ]}
+      }
+    }
+  ]
+}

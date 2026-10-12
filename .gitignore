@@ -1,0 +1,19 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Environment and local database
+.env
+db.sqlite3
+
+# Browser automation and review artifacts
+.cdp-layout/
+.chrome-*/
+.dom-review/
+*-review.html
+measure*.html
+
+# Generated screenshots
+*.png

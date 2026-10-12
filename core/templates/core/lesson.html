@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% block title %}{{ lesson.title }} — EtymoPath{% endblock %}
+{% block content %}
+<main class="app-main container">
+  <nav class="breadcrumb-mini" aria-label="Breadcrumb">
+    <a href="{% url 'core:journey' %}">Learning Journey</a><span aria-hidden="true">/</span>
+    <span>{{ lesson.module.level.name }}</span><span aria-hidden="true">/</span><span>{{ lesson.module.title }}</span>
+  </nav>
+  <header class="page-heading">
+    <div><p class="page-kicker">{{ lesson.module.level.name }} · {{ lesson.module.title }}</p><h1>{{ lesson.title }}</h1><p>{{ lesson.introduction }}</p></div>
+    {% if completed %}<span class="status-pill done">Lesson complete</span>{% endif %}
+  </header>
+  <div class="row g-4">
+    <section class="col-lg-8">
+      <div class="panel">
+        <p class="section-label">LESSON WORDS</p>
+        <p class="muted small">Open a word to review its meaning, formation, and sources.</p>
+        {% for entry in lesson.lesson_words.all %}
+          {% with word=entry.word %}
+          <details class="word-study">
+            <summary><span><h2 class="d-inline">{{ word.spelling }}</h2><span class="study-pos">{{ word.part_of_speech }}</span></span><span class="status-pill">{{ word.root_links.first.root.display|default:'Word study' }}</span></summary>
+            <div class="word-study-content">
+              <div class="study-meta">{% if word.pronunciation %}<span>{{ word.pronunciation }}</span>{% endif %}{% if word.syllables %}<span>{{ word.syllables }}</span>{% endif %}<span>{{ word.get_editorial_status_display }}</span></div>
+              <p><strong>Meaning.</strong> {{ word.definition }}</p>
+              <p><strong>Formation.</strong> {{ word.etymology }}</p>
+              {% if word.example %}<p><strong>Example.</strong> <em>{{ word.example }}</em></p>{% endif %}
+              {% for link in word.root_links.all %}
+                <p><strong>Root connection.</strong> {{ link.root.display }} — {{ link.root.language }} {{ link.root.origin_form }}, “{{ link.root.meaning }}”. {{ link.get_relationship_type_display }}{% if link.morpheme %}; element {{ link.morpheme }}{% if link.morpheme_meaning %} ({{ link.morpheme_meaning }}){% endif %}{% endif %}</p>
+              {% endfor %}
+              <div class="study-source">{% if word.dictionary_url %}<a href="{{ word.dictionary_url }}" target="_blank" rel="noopener noreferrer">Dictionary entry ↗</a>{% endif %}{% if word.etymology_url %}<a href="{{ word.etymology_url }}" target="_blank" rel="noopener noreferrer">Etymology source ↗</a>{% endif %}</div>
+            </div>
+          </details>
+          {% endwith %}
+        {% empty %}
+          <p class="muted">No vocabulary has been assigned to this lesson yet.</p>
+        {% endfor %}
+      </div>
+    </section>
+    <aside class="col-lg-4">
+      <div class="panel">
+        <p class="section-label">PRACTISE</p><h2 class="panel-title">Check what you learned</h2>
+        <p class="muted small">The assessment is based on this lesson’s word roots and formation notes.</p>
+        {% if lesson.questions.exists %}<a class="btn btn-forest w-100" href="{% url 'core:quiz' lesson.slug %}">Take assessment <span aria-hidden="true">→</span></a>{% else %}<p class="muted small">An assessment has not been added to this lesson.</p>{% endif %}
+        {% if not completed %}
+          <form method="post" action="{% url 'core:lesson-complete' lesson.slug %}" class="mt-3">{% csrf_token %}<button class="btn-outline-forest w-100" type="submit">Mark lesson complete</button></form>
+        {% else %}<p class="status-pill done mt-3">Completed {{ completed_at|date:'M j, Y' }}</p>{% endif %}
+      </div>
+      <div class="inline-actions justify-content-between mt-3">
+        {% if previous_lesson %}<a class="quiet-link small" href="{% url 'core:lesson' previous_lesson.slug %}">← Previous</a>{% else %}<span></span>{% endif %}
+        {% if next_lesson %}<a class="quiet-link small" href="{% url 'core:lesson' next_lesson.slug %}">Next lesson →</a>{% endif %}
+      </div>
+    </aside>
+  </div>
+</main>
+{% endblock %}

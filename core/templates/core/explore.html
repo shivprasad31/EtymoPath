@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Explore Word Roots — EtymoPath{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'core/css/explore.css' %}">{% endblock %}
+{% block content %}
+<main class="explorer-main app-main" id="explorer" data-selected-root="{{ selected_root_id }}" data-selected-word="{{ selected_word_id }}" data-search-url="{% url 'core:explore-search' %}">
+  <section class="explorer-intro container">
+    <a class="back-link" href="{% url 'core:home' %}"><span aria-hidden="true">←</span> Back to home</a>
+    <div class="intro-row">
+      <div><p class="eyebrow"><span class="eyebrow-line"></span> FOLLOW THE WORDS</p><h1>Explore Word <em>Roots</em></h1><p class="intro-copy">Start with a root, then follow prefixes and word forms to see how meaning travels. Similar spelling alone doesn’t establish a shared origin.</p></div>
+      <form class="search-wrap" id="root-search-form" method="get" action="{% url 'core:explore' %}">
+        {% if selected_root_id %}<input type="hidden" name="root" value="{{ selected_root_id }}">{% endif %}
+        <label class="visually-hidden" for="root-search">Search roots or words</label><span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="root-search" name="q" type="search" value="{{ search_query }}" autocomplete="off" placeholder="Search roots or words" aria-describedby="search-hint"><kbd aria-hidden="true">/</kbd>
+        <button class="search-submit" type="submit">Search</button><span id="search-hint" class="visually-hidden">Search the curated roots and word families.</span>
+      </form>
+    </div>
+    <div id="search-results" class="search-results" role="status" aria-live="polite" {% if not search_query %}hidden{% endif %}>
+      {% if search_query %}<div class="result-heading">SEARCH RESULTS</div>{% for result in search_results %}<a class="result-item" href="?root={{ result.root_id }}{% if result.word_id %}&amp;word={{ result.word_id }}{% endif %}"><span>{{ result.label }}</span><small>{{ result.meta }}</small></a>{% empty %}<p class="empty-results">No matches in this curated collection. Try “script”, “describe”, or “carry”.</p>{% endfor %}{% endif %}
+    </div>
+  </section>
+
+  <section class="explorer-workspace container" aria-label="Root word explorer">
+    <aside class="root-sidebar" aria-label="Select a root">
+      <div class="sidebar-heading"><span class="side-label">ROOT COLLECTION</span><span id="root-count" class="root-count">{{ roots|length }} roots</span></div>
+      <div id="root-list" class="root-list">{% for root in roots %}<a class="root-choice" href="?root={{ root.id }}" aria-current="{% if root.id == selected_root_id %}true{% else %}false{% endif %}"><strong>{{ root.label }}</strong><small>“{{ root.gloss }}” · {{ root.origin }}</small></a>{% empty %}<p class="muted">No verified roots are available yet.</p>{% endfor %}</div>
+      <p class="data-note">A word family is based on historical word formation, not just similar-looking spelling.</p>
+    </aside>
+
+    <div class="explorer-content">
+      {% if selected_root %}
+      <header class="family-heading"><div><p class="side-label">WORD FAMILY</p><h2 id="family-title">{{ selected_root.label }}</h2><p id="family-origin" class="family-origin">{{ selected_root.origin }} · “{{ selected_root.gloss }}”</p>{% if selected_root.source %}<a id="root-source" class="root-source" href="{{ selected_root.source }}" target="_blank" rel="noopener noreferrer">Root etymology source ↗</a>{% else %}<a id="root-source" class="root-source" hidden></a>{% endif %}</div><div class="tree-legend"><span class="legend-mark"></span> historically related</div></header>
+      <div class="tree-layout">
+        <section class="tree-panel" aria-label="Interactive word family tree">
+          <div id="word-tree" class="word-tree">
+            <div class="tree-root"><strong>{{ selected_root.label }}</strong><small>{{ selected_root.origin }} · “{{ selected_root.gloss }}”</small></div>
+            <ul class="branch-list">{% for group in selected_root.groups %}<li class="branch-item"><span class="branch-toggle fallback-branch">{{ group.label }}</span><div class="branch-words">{% for word in group.words %}<a class="word-choice" href="?root={{ selected_root.id }}&amp;word={{ word.id }}"><span class="word-dot" aria-hidden="true"></span><strong>{{ word.word }}</strong></a>{% endfor %}</div></li>{% endfor %}</ul>
+          </div>
+          <p class="tree-help">Choose a branch to expand it, then select a word to explore its formation.</p>
+        </section>
+        <aside class="detail-panel" id="word-details" aria-live="polite" aria-label="Word details">
+          {% if selected_word %}<article class="detail-content"><div class="detail-topline"><div><p class="side-label">WORD NOTES</p><h3 class="detail-word">{{ selected_word.word }}</h3><p class="detail-part">{{ selected_word.part_of_speech }}</p></div><span class="detail-tag">{{ selected_word.relationship }}</span></div><div class="pronunciation-row">{% if selected_word.pronunciation %}<span>Pronunciation <strong>{{ selected_word.pronunciation }}</strong></span>{% else %}<span class="detail-unavailable">Pronunciation not verified</span>{% endif %}{% if selected_word.syllables %}<span>Syllables <strong>{{ selected_word.syllables }}</strong></span>{% else %}<span class="detail-unavailable">Syllable division not verified</span>{% endif %}</div><section class="detail-section"><h4>MEANING</h4><p>{{ selected_word.meaning }}</p></section><section class="detail-section"><h4>ETYMOLOGY &amp; ROOT CONNECTION</h4><p>{{ selected_word.etymology }}</p></section><section class="detail-section"><h4>IN A SENTENCE</h4><p class="example-text">{{ selected_word.example }}</p></section><div class="detail-sources"><a href="{{ selected_word.dictionary_url }}" rel="noopener noreferrer" target="_blank">Dictionary entry ↗</a><a href="{{ selected_word.etymology_url }}" rel="noopener noreferrer" target="_blank">Etymology source ↗</a></div></article>{% else %}<div class="detail-empty"><span class="detail-glyph" aria-hidden="true">↗</span><p class="side-label">WORD NOTES</p><h3>Choose a word</h3><p>Its meaning, formation, and place in the family will appear here.</p></div>{% endif %}
+        </aside>
+      </div>
+      {% else %}<div class="empty-state"><h2>No curated roots yet</h2><p>Load the reviewed sample content with the seed command to make the explorer available.</p></div>{% endif %}
+    </div>
+  </section>
+  {{ roots|json_script:"root-data" }}
+</main>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'core/js/explore.js' %}" defer></script>{% endblock %}

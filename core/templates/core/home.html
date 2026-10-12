@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% block title %}EtymoPath — Every word has a story{% endblock %}
+{% block content %}
+<main>
+  <section class="hero-section" id="home">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> A richer way to learn words</p>
+        <h1>Every word has a story.<br><em>Discover it.</em></h1>
+        <p class="hero-description">Go beyond definitions. Follow word roots, learn how words were formed, and discover the connections that make vocabulary easier to remember.</p>
+        <div class="hero-actions"><a href="{% url 'core:explore' %}" class="btn btn-forest btn-lg">Explore word roots <span aria-hidden="true">→</span></a><a href="{% url 'core:journey' %}" class="hero-note">See the learning journey</a></div>
+      </div>
+      <div class="tree-card" aria-label="Example of a word family">
+        <div class="tree-card-top"><div><span class="card-kicker">LATIN ROOT</span><h2>scrib / script</h2></div><span class="root-spark" aria-hidden="true">✳</span></div>
+        <p class="root-meaning">“to write”</p>
+        <div class="tree-visual" role="img" aria-label="The Latin writing root connects through word formation to describe, inscription, manuscript, and transcript">
+          <svg class="tree-lines" viewBox="0 0 520 290" preserveAspectRatio="none" aria-hidden="true"><path d="M260 54 V98 M260 98 H82 V143 M260 98 H438 V143 M260 98 V218 M82 179 V229 M438 179 V229"/><circle cx="260" cy="98" r="4"/><circle cx="82" cy="143" r="4"/><circle cx="438" cy="143" r="4"/><circle cx="260" cy="218" r="4"/></svg>
+          <div class="tree-node root-node"><span class="node-dot"></span>scrib / script</div>
+          <div class="tree-node word-node word-one"><span class="node-dot"></span><strong>describe</strong><small>de- + scribere</small></div>
+          <div class="tree-node word-node word-two"><span class="node-dot"></span><strong>inscription</strong><small>in- + scribere</small></div>
+          <div class="tree-node word-node word-three"><span class="node-dot"></span><strong>manuscript</strong><small>manu + scriptus</small></div>
+          <div class="tree-node word-node word-four"><span class="node-dot"></span><strong>transcript</strong><small>trans- + scribere</small></div>
+        </div>
+        <div class="tree-card-bottom"><span>Example family · Latin scribere</span><a href="{% url 'core:explore' %}">Explore family <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section section-pad" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">THE ETYMOPATH METHOD</p><h2 id="features-heading">Learn words through<br><em>their connections.</em></h2></div><p class="section-intro">Understand the parts and history behind a word, then practise what you learned and revisit it over time.</p></div>
+      <div class="row g-4 feature-row">
+        <div class="col-md-4"><article class="feature-card"><div class="feature-icon icon-leaf" aria-hidden="true">◌</div><span class="feature-number">01 / DISCOVER</span><h3>Discover Roots</h3><p>Start with a historical root and its meaning, supported by source notes.</p><a href="{% url 'core:explore' %}" class="text-link">Find a root <span aria-hidden="true">→</span></a></article></div>
+        <div class="col-md-4"><article class="feature-card"><div class="feature-icon icon-branch" aria-hidden="true">⌘</div><span class="feature-number">02 / CONNECT</span><h3>Explore Word Families</h3><p>Follow prefixes and word forms to understand how related words differ.</p><a href="{% url 'core:explore' %}" class="text-link">Follow a family <span aria-hidden="true">→</span></a></article></div>
+        <div class="col-md-4"><article class="feature-card"><div class="feature-icon icon-sun" aria-hidden="true">↻</div><span class="feature-number">03 / PRACTISE</span><h3>Review Your Learning</h3><p>Complete lessons, check your understanding, and revisit words due for practice.</p><a href="{% url 'core:journey' %}" class="text-link">View lessons <span aria-hidden="true">→</span></a></article></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey-section section-pad" id="journey"><div class="container journey-inner">
+    <div class="journey-heading"><p class="eyebrow">YOUR LEARNING JOURNEY</p><h2>Build knowledge<br><em>step by step.</em></h2><p>Move from first roots to closer study of word formation. Lessons are open to explore at every level.</p><a class="btn btn-forest mt-2" href="{% url 'core:journey' %}">Browse the lessons <span aria-hidden="true">→</span></a></div>
+    <div class="journey-levels"><article class="level-card"><span class="level-index">01</span><div class="level-icon">✳</div><div><span class="level-tag">BEGIN WITH THE ROOTS</span><h3>Beginner</h3><p>Meet scribere and a first family of related words.</p></div><span class="level-arrow" aria-hidden="true">↗</span></article><article class="level-card"><span class="level-index">02</span><div class="level-icon">⌘</div><div><span class="level-tag">COMPARE FORMATION</span><h3>Intermediate</h3><p>Explore how prefixes shape words formed from portare.</p></div><span class="level-arrow" aria-hidden="true">↗</span></article><article class="level-card"><span class="level-index">03</span><div class="level-icon">✧</div><div><span class="level-tag">READ THE DETAILS</span><h3>Advanced</h3><p>Compare historical pathways and morphological roles.</p></div><span class="level-arrow" aria-hidden="true">↗</span></article></div>
+  </div></section>
+</main>
+{% endblock %}

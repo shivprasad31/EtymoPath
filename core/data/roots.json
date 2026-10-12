@@ -1,0 +1,172 @@
+[
+  {
+    "id": "scrib-script",
+    "label": "scrib / script",
+    "origin": "scribere (‘to write’)",
+    "gloss": "write",
+    "source": "https://www.etymonline.com/word/scribe",
+    "groups": [
+      {
+        "id": "de",
+        "label": "de- · down",
+        "words": [
+          {
+            "id": "describe",
+            "word": "describe",
+            "pronunciation": "di-ˈskrīb",
+            "syllables": "de·scribe",
+            "part_of_speech": "verb",
+            "meaning": "To represent or give an account of in words.",
+            "etymology": "From Latin describere, from de- + scribere ‘to write’. The prefix and root together form the Latin verb behind English describe.",
+            "relationship": "Derived: de- + Latin scribere",
+            "example": "Can you describe the pattern you noticed?",
+            "dictionary_url": "https://www.merriam-webster.com/dictionary/describe",
+            "etymology_url": "https://www.etymonline.com/word/describe"
+          }
+        ]
+      },
+      {
+        "id": "in",
+        "label": "in- · in / on",
+        "words": [
+          {
+            "id": "inscription",
+            "word": "inscription",
+            "pronunciation": "in-ˈskrip-shən",
+            "syllables": "in·scrip·tion",
+            "part_of_speech": "noun",
+            "meaning": "Words written or engraved on a surface; also, a dedication in a book or artwork.",
+            "etymology": "From Latin inscriptionem, from inscribere ‘to write on or in’, built from in- ‘in, on’ + scribere ‘to write’. The English noun came through Middle English.",
+            "relationship": "Derived: in- + Latin scribere (through inscribere)",
+            "example": "The short inscription was carved above the doorway.",
+            "dictionary_url": "https://www.merriam-webster.com/dictionary/inscription",
+            "etymology_url": "https://www.etymonline.com/word/inscription"
+          }
+        ]
+      },
+      {
+        "id": "manu",
+        "label": "manu · by hand",
+        "words": [
+          {
+            "id": "manuscript",
+            "word": "manuscript",
+            "pronunciation": "ˈman-yə-ˌskript",
+            "syllables": "man·u·script",
+            "part_of_speech": "noun; also adjective",
+            "meaning": "A written or typewritten composition or document, especially one distinguished from a printed copy.",
+            "etymology": "From Latin manu scriptus, ‘written by hand’: manu (‘by hand’) + scriptus, the past participle of scribere (‘to write’). The script element is related to the Latin root; manu adds the idea of hand-writing.",
+            "relationship": "Participle-based compound: manu + scriptus (from scribere)",
+            "example": "She revised the manuscript before sending it to her editor.",
+            "dictionary_url": "https://www.merriam-webster.com/dictionary/manuscript",
+            "etymology_url": "https://www.etymonline.com/word/manuscript"
+          }
+        ]
+      },
+      {
+        "id": "trans",
+        "label": "trans- · across / again",
+        "words": [
+          {
+            "id": "transcript",
+            "word": "transcript",
+            "pronunciation": "ˈtran(t)-ˌskript",
+            "syllables": "tran·script",
+            "part_of_speech": "noun",
+            "meaning": "A written, printed, or typed copy; especially, a typed copy of recorded or dictated material.",
+            "etymology": "From Latin transcribere, ‘to copy or write again elsewhere’, from trans- ‘across’ + scribere ‘to write’; transcript is based on the Latin participle transcriptum.",
+            "relationship": "Participle-based form: trans- + Latin scribere (through transcribere)",
+            "example": "The interview transcript helped the team check its notes.",
+            "dictionary_url": "https://www.merriam-webster.com/dictionary/transcript",
+            "etymology_url": "https://www.etymonline.com/word/transcript"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "port",
+    "label": "port",
+    "origin": "portare (‘to carry’)",
+    "gloss": "carry",
+    "source": "https://www.etymonline.com/word/port",
+    "groups": [
+      {
+        "id": "trans",
+        "label": "trans- · across",
+        "words": [
+          {
+            "id": "transport",
+            "word": "transport",
+            "pronunciation": null,
+            "syllables": null,
+            "part_of_speech": "verb; also noun",
+            "meaning": "To carry or convey from one place to another.",
+            "etymology": "From Latin transportare, ‘carry across’, from trans- ‘across’ + portare ‘to carry’.",
+            "relationship": "Derived: trans- + Latin portare",
+            "example": "Small boats transport supplies to the island.",
+            "dictionary_url": "https://www.merriam-webster.com/dictionary/transport",
+            "etymology_url": "https://www.etymonline.com/word/transport"
+          }
+        ]
+      },
+      {
+        "id": "in",
+        "label": "in- · in / into",
+        "words": [
+          {
+            "id": "import",
+            "word": "import",
+            "pronunciation": null,
+            "syllables": null,
+            "part_of_speech": "verb; also noun",
+            "meaning": "To bring goods or services into a country from abroad.",
+            "etymology": "From Latin importare, ‘bring in’, from an assimilated form of in- ‘in, into’ + portare ‘to carry’. The English verb also developed a separate sense ‘to signify’. ",
+            "relationship": "Derived: in- + Latin portare",
+            "example": "The shop imports tea from several regions.",
+            "dictionary_url": "https://www.merriam-webster.com/dictionary/import",
+            "etymology_url": "https://www.etymonline.com/word/import"
+          }
+        ]
+      },
+      {
+        "id": "ex",
+        "label": "ex- · out",
+        "words": [
+          {
+            "id": "export",
+            "word": "export",
+            "pronunciation": null,
+            "syllables": null,
+            "part_of_speech": "verb; also noun",
+            "meaning": "To send or carry goods to another country for sale.",
+            "etymology": "From Latin exportare, ‘carry out’, formed from ex- ‘out’ + portare ‘to carry’.",
+            "relationship": "Derived: ex- + Latin portare",
+            "example": "The farm exports fruit to neighboring countries.",
+            "dictionary_url": "https://www.merriam-webster.com/dictionary/export",
+            "etymology_url": "https://www.etymonline.com/word/export"
+          }
+        ]
+      },
+      {
+        "id": "able",
+        "label": "-able · able to be",
+        "words": [
+          {
+            "id": "portable",
+            "word": "portable",
+            "pronunciation": null,
+            "syllables": null,
+            "part_of_speech": "adjective",
+            "meaning": "Capable of being carried from place to place.",
+            "etymology": "From French portable and Late Latin portabilis, from Latin portare ‘to carry’. The Latin verb is the shared root; English portable came through those later forms.",
+            "relationship": "Root-related borrowing: from Latin portare through portabilis",
+            "example": "A portable lamp made the reading nook easier to use.",
+            "dictionary_url": "https://www.merriam-webster.com/dictionary/portable",
+            "etymology_url": "https://www.etymonline.com/word/portable"
+          }
+        ]
+      }
+    ]
+  }
+]
